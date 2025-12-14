@@ -1,7 +1,6 @@
 package com.ClinicaOdo.UP.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,11 +20,18 @@ import java.util.Collections;
 @Table(name = "usuarios")
 public class Usuario implements UserDetails {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String nombre;
+    @Column
     private String userName;
+    @Column
     private String password;
+    @Column(unique=true,nullable = false)
     private String email;
+    @Column
     private UsuarioRole usuarioRole;
 
     @Override
