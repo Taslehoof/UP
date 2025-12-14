@@ -1,16 +1,24 @@
 package com.ClinicaOdo.UP.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.aot.generate.Generated;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "domicilios")
 public class Domicilio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String calle;
+    @Column
     private int numero;
+    @Column
     private String localidad;
+    @Column
     private String provincia;
 
     public Domicilio() {}
