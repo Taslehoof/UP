@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonrisa Feliz - Tu Clinica Odontologica</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="includednavBar"></div>
+<div class="container">
+    <div id="div_turno_table">
+        <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+            <h1 class="h4 mb-0">Lista de Turnos</h1>
+        </div>
+
+        <div class="row col-md-auto table-responsive">
+            <table id="turnoTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre Paciente</th>
+                    <th>Apellido Paciente</th>
+                    <th>Fecha del Turno</th>
+                    <th>Nombre Doctor</th>
+                    <th>Apellido Doctor</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="turnoTableBody">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<!-- Modal: Confirmar borrado -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-6">Confirmar borrado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que querés eliminar el turno del paciente
+                <strong id="confirmTurnoNombre"></strong> para el día
+                <strong id="confirmTurnoFecha"></strong>?
+                <br>Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmDelete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal: Confirmar borrado -->
+<script type="text/javascript" src="/js/get_Turno.js"></script>
+<script type="text/javascript" src="/js/add_Turno.js"></script>
+<script type="text/javascript" src="/js/delete_Turno.js"></script>
+<script type="text/javascript" src="/js/update_Turno.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $("#includednavBar").load("fragments/navbar.html");
+    });
+</script>
+</body>
+</html>

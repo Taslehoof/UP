@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonrisa Feliz - Tu Clinica Odontologica</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="includednavBar"></div>
+<div class="container">
+    <div id="div_odontologo_table">
+        <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+            <h1 class="h4 mb-0">Lista de Odontologos</h1>
+            <button type="button" class="btn btn-primary btn-mb-3" id="btnAgregarOdontologo" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Agregar Odontologo
+            </button>
+        </div>
+
+        <div class="row col-md-auto table-responsive">
+            <table id="odontologoTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Matricula</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="odontologoTableBody">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+<!-- Modal Añadir odonotologo -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Odontologo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" id="agregar_odontologo_form">
+                    <div class="col-md-6">
+                        <label for="add_nombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" placeholder="Juan" aria-label="Nombre" id="add_nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="add_apellido" class="form-label">Apellido:</label>
+                        <input type="text" class="form-control" placeholder="Perez" aria-label="Apellido" id="add_apellido">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="add_matricula" class="form-label">Matricula:</label>
+                        <input type="text" class="form-control" placeholder="12345678" aria-label="Matricula" id="add_matricula">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Añadir Odontólogo</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Añadir Odontologo -->
+
+<!-- Modal Ver / Modificar Odontologo -->
+<div class="modal fade" id="verOdontologo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="verOdontologoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="verOdontologoLabel">Información del Odontologo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body">
+                <form class="row g-3" id="ver_odontologo_form">
+                    <div class="col-md-4">
+                        <label for="ver_odontologo_id" class="form-label">Id Odontologo</label>
+                        <input type="text" class="form-control" id="ver_odontologo_id" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ver_nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="ver_nombre" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ver_apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="ver_apellido" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ver_matricula" class="form-label">Matricula</label>
+                        <input type="text" class="form-control" id="ver_matricula" readonly>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" id="btnToggleEdit">Modificar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ver / Modificar Odontologo -->
+
+<!-- Modal: Confirmar borrado -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-6">Confirmar borrado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que querés eliminar al odontologo
+                <strong id="confirmOdontologoNombre"></strong>
+                (<span id="confirmOdontologoId"></span>)?
+                <br>Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmDelete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal: Confirmar borrado -->
+<script type="text/javascript" src="/js/get_Odontologo.js"></script>
+<script type="text/javascript" src="/js/add_Odontologo.js"></script>
+<script type="text/javascript" src="/js/delete_Odontologo.js"></script>
+<script type="text/javascript" src="/js/update_Odontologo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $("#includednavBar").load("fragments/navbar.html");
+    });
+</script>
+</body>
+</html>

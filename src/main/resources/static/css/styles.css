@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Contenedor de la parte del logo:
+   ocupa exactamente lo que queda de la pantalla debajo del navbar */
+.svg-page {
+    /* altura exacta: viewport - alto navbar (56px es el tamaño del navbar de bootstrap) */
+    height: calc(100vh - 56px);
+
+    display: flex;
+    justify-content: center;   /* centra horizontalmente el contenido dentro de svg-page */
+    align-items: flex-start;   /* alineado arriba dentro de svg-page */
+
+    /* desplazamos el contenido hacia abajo dentro del MISMO alto (no agranda la página) */
+    padding-top: 12vh;         /* ajustamos como más nos guste */
+}
+
+/* Control del tamaño del SVG (es 2000x2000 pero lo escalamos) */
+.svg-logo {
+    max-width: 400px;   /* ajustamos como queramos */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* Alinea el logo con el texto */
+.navbar-brand {
+    display: flex;
+    align-items: center;   /* centra verticalmente logo y texto */
+    gap: .5rem;            /* espacio entre logo y texto */
+    line-height: 1;        /* evita saltos raros por altura de línea */
+}
+
+.svg-logost {
+    height: 28px;          /* ajustá el alto a gusto */
+    width: auto;
+    display: block;        /* elimina el espacio por línea base */
+    vertical-align: middle;/* por si se muestra inline en algún caso */
+}

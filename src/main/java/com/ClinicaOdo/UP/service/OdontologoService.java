@@ -1,5 +1,6 @@
 package com.ClinicaOdo.UP.service;
 
+import com.ClinicaOdo.UP.dto.OdontologoDTO;
 import com.ClinicaOdo.UP.entity.Odontologo;
 import com.ClinicaOdo.UP.repository.OdontologoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class OdontologoService {
         return odontologoRepository.findAll();
     }
 
-    /*public List<OdontologoDTO> buscarTodosLosOdontologosDTO(){
+    public List<OdontologoDTO> buscarTodosLosOdontologosDTO(){
         return odontologoRepository.findAll().stream().map(this::odontologoAOdontologoDTO).collect(Collectors.toList());
-    }*/
+    }
 
     public Optional<Odontologo> buscarPorMatricula(String matricula){
         return odontologoRepository.findByMatricula(matricula);
@@ -38,13 +39,13 @@ public class OdontologoService {
         odontologoRepository.deleteById(id);
     }
 
-/*    public OdontologoDTO odontologoAOdontologoDTO(Odontologo odontologo){
+    public OdontologoDTO odontologoAOdontologoDTO(Odontologo odontologo){
 
         OdontologoDTO odontologoDTO = new OdontologoDTO();
-        odontologoDTO.setId(odontologo.getId();
-        odontologoDTO.setNombre(odontologo.getNombre();
-        odontologoDTO.setApellido(odontologo.getApellido();
+        odontologoDTO.setId(odontologo.getId());
+        odontologoDTO.setNombre(odontologo.getNombre());
+        odontologoDTO.setApellido(odontologo.getApellido());
 
         return odontologoDTO;
-    }*/
+    }
 }
