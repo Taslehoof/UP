@@ -29,7 +29,7 @@ public class OdontologoTestService {
     }
 
    @Test
-   void guardarOdontologo_deberiaPersisteYRetorna(){
+   void guardarOdontologo_DeberiaPersisteYRetornar(){
         // DADO
        System.out.println("Probando guardar un Odontologo");
        Odontologo odontologo = crearOdontologoTestUnitario();
@@ -47,6 +47,27 @@ public class OdontologoTestService {
 
    @Test
    void borrarOdontologo_DeberiaEliminarOdontologo(){
+       // DADO
+       System.out.println("Iniciando prueba eliminar un Odontologo");
+       Odontologo odontologo = crearOdontologoTestUnitario();
+       Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+       Long idOdontologo = odontologoGuardado.getId();
+       assertNotNull(odontologoGuardado.getId(), "Debe retornar un ID luago de guardar");
 
+       // CUANDO
+       odontologoService.borrarOdontologo(idOdontologo);
+
+       // ENTONCES
+       Optional<Odontologo> eliminado = odontologoService.buscarPorId(idOdontologo);
+       assertTrue(eliminado.isEmpty(), "El odontologo deberia haber sido eliminado");
+   }
+
+   @Test
+    void modificarOdontologo_DeberiaModificarOdontologo(){
+        // DADO
+
+       // CUANDO
+
+       // ENTONCES
    }
 }
