@@ -65,9 +65,18 @@ public class OdontologoTestService {
    @Test
     void modificarOdontologo_DeberiaModificarOdontologo(){
         // DADO
+       System.out.println("Iniciando prueba modificar un Odontologo");
+       Odontologo odontologo = crearOdontologoTestUnitario();
+       Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+       Long idOdontologo = odontologoGuardado.getId();
+       assertNotNull(odontologoGuardado.getId(),"Debe retornar un ID luego de guardar");
 
        // CUANDO
+       odontologoGuardado.setNombre("Carlos");
+       odontologoService.guardarOdontologo(odontologoGuardado);
 
        // ENTONCES
+       Optional<Odontologo> actualizado = odontologoService.buscarPorId(idOdontologo);
+       assertEquals("Carlos", actualizado.get().getNombre(),"El nombre del odontologo no coincide luego de modoficarlo");
    }
 }
