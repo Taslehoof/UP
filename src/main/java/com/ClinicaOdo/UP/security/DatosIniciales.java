@@ -1,5 +1,7 @@
 package com.ClinicaOdo.UP.security;
 
+import com.ClinicaOdo.UP.entity.Domicilio;
+import com.ClinicaOdo.UP.entity.Paciente;
 import com.ClinicaOdo.UP.entity.Usuario;
 import com.ClinicaOdo.UP.entity.UsuarioRole;
 import com.ClinicaOdo.UP.repository.OdontologoRepository;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.time.LocalDate;
 
 public class DatosIniciales  implements ApplicationRunner {
 
@@ -32,6 +36,10 @@ public class DatosIniciales  implements ApplicationRunner {
         Usuario usuario = new Usuario("Sergio","admin", passCifrado, "admin@admin.com", UsuarioRole.ROLE_ADMIN);
         System.out.println("Pass sin cifrar: " + pass + " Pass cifrado: " + passCifrado);
         usuarioRepository.save(usuario);
+
+        Domicilio domicilio = new Domicilio("Siempre Viva",1212,"Springfield","Mississipi");
+        Paciente paciente = new Paciente("Homero","Simpson",123123, LocalDate.of(2025,11,6),domicilio,"Homero@Fox.com");
+        pacienteRepository.save(paciente);
 
     }
 }
