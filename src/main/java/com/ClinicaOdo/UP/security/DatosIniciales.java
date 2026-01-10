@@ -1,9 +1,6 @@
 package com.ClinicaOdo.UP.security;
 
-import com.ClinicaOdo.UP.entity.Domicilio;
-import com.ClinicaOdo.UP.entity.Paciente;
-import com.ClinicaOdo.UP.entity.Usuario;
-import com.ClinicaOdo.UP.entity.UsuarioRole;
+import com.ClinicaOdo.UP.entity.*;
 import com.ClinicaOdo.UP.repository.OdontologoRepository;
 import com.ClinicaOdo.UP.repository.PacienteRepository;
 import com.ClinicaOdo.UP.repository.TurnoRepository;
@@ -40,6 +37,12 @@ public class DatosIniciales  implements ApplicationRunner {
         Domicilio domicilio = new Domicilio("Siempre Viva",1212,"Springfield","Mississipi");
         Paciente paciente = new Paciente("Homero","Simpson",123123, LocalDate.of(2025,11,6),domicilio,"Homero@Fox.com");
         pacienteRepository.save(paciente);
+
+        Odontologo odontolgo = new Odontologo("Nick","Rivera","Fake123123");
+        odontologoRepository.save(odontolgo);
+
+        Turno turno = new Turno(paciente,odontolgo,LocalDate.of(2025,11,16));
+        turnoRepository.save(turno);
 
     }
 }
