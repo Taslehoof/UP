@@ -46,7 +46,9 @@ public class TurnoService {
         for (Turno turno : turnos){
             listaTurnosDTO.add(turnoATurnoDTO(turno));
         }
-        return listarTurnos().stream().sorted((e1, e2) -> e1.getFecha().compareTo(e2.getFecha())).collect(Collectors.toList());
+        return listaTurnosDTO.stream()
+                .sorted((e1, e2) -> e1.getFecha().compareTo(e2.getFecha()))
+                .collect(Collectors.toList());
     }
 
     public TurnoDTO turnoATurnoDTO(Turno turno){
