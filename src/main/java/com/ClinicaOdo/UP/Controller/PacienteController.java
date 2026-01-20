@@ -51,6 +51,15 @@ public class PacienteController {
                 throw new BadEmailException("Email incorrectamente ingresado");
             }
         }
+        /*if(pacienteBuscado.isPresent()){
+            throw new PacienteYaRegistradoException("El paciente a registrar ya existe con ese mail");
+        } else {
+            if(paciente.getEmail().matches("^[A-Za-z0-9+_.-]+@fox.com")){
+                return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
+            } else {
+                throw new BadEmailException("Email incorrectamente ingresado");
+            }
+        }*/
     }
 
     @PutMapping("/{id}")

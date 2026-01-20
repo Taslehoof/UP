@@ -36,4 +36,6 @@ public class Turno {
         this.odontologo = odontologo;
         this.fecha = fecha;
     }
+
+    //public Turno(Paciente paciente, Odontologo odontologo, boolean equal) {}
 }
