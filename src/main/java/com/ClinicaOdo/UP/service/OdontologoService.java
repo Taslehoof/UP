@@ -23,6 +23,10 @@ public class OdontologoService {
         return odontologoRepository.findById(id);
     }
 
+    public Optional<Odontologo> buscarPorNombre(String nombre){
+        return odontologoRepository.findByNombre(nombre);
+    }
+
     public List<Odontologo> buscarTodosLosOdontologos(){
         return odontologoRepository.findAll();
     }

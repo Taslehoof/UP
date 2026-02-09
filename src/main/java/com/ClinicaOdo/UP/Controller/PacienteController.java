@@ -33,6 +33,16 @@ public class PacienteController {
         }
     }
 
+    /*@GetMapping("/BuscarPorNombre/{nombre}")
+    public ResponseEntity<Optional<Paciente>> buscarPorNombre(@PathVariable String nombre){
+        Optional<Paciente>  pacienteBuscado = pacienteService.buscarPorNombre(nombre);
+        if(pacienteBuscado.isPresent()){
+            return ResponseEntity.ok(pacienteBuscado);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }*/
+
     @GetMapping
     public ResponseEntity<List<Paciente>> listarPacientes(){
         return ResponseEntity.ok(pacienteService.buscarTodosLosPacientes());

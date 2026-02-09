@@ -67,6 +67,12 @@ public class DatosIniciales  implements ApplicationRunner {
         Odontologo odontolgo = new Odontologo("Nick","Rivera","Fake123123");
         odontologoRepository.save(odontolgo);
 
+        Odontologo odontolgoPepe = new Odontologo("PEPE","GONZALEZ","PEP584");
+        odontologoRepository.save(odontolgoPepe);
+
+        Odontologo odontolgoJoakim = new Odontologo("joakim","broden","JB3825");
+        odontologoRepository.save(odontolgoJoakim);
+
         Odontologo odontolgoHibbert = new Odontologo("Julius","Hibbert","SPR1001");
         odontologoRepository.save(odontolgoHibbert);
 

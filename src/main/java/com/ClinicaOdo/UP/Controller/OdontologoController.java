@@ -32,6 +32,16 @@ public class OdontologoController {
         }
     }
 
+    @GetMapping("/BuscarPorNombre/{nombre}")
+    public ResponseEntity<Optional<Odontologo>> buscarPorNombre(@PathVariable String nombre){
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorNombre(nombre);
+        if(odontologoBuscado.equals(nombre.toUpperCase())){
+            return ResponseEntity.ok(odontologoBuscado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<Odontologo>> listaOdontologos(){
         return ResponseEntity.ok(odontologoService.buscarTodosLosOdontologos());
