@@ -1,7 +1,9 @@
 package com.ClinicaOdo.UP.Controller;
 
 import com.ClinicaOdo.UP.Exception.ResourceNotFoundException;
+import com.ClinicaOdo.UP.dto.AgendarTurnoDTO;
 import com.ClinicaOdo.UP.dto.OdontologoDTO;
+import com.ClinicaOdo.UP.dto.TurnoDTO;
 import com.ClinicaOdo.UP.entity.Odontologo;
 import com.ClinicaOdo.UP.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,19 @@ public class OdontologoController {
     }
 
     @GetMapping("/BuscarPorNombre/{nombre}")
-    public ResponseEntity<Optional<Odontologo>> buscarPorNombre(@PathVariable String nombre){
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorNombre(nombre);
-        if(odontologoBuscado.equals(nombre.toUpperCase())){
+    public ResponseEntity<Optional<Odontologo>> buscarPorNombreMayuscula(@PathVariable String nombre){
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorNombreMayuscula(nombre.toUpperCase());
+        if(odontologoBuscado.isPresent()){
+            return ResponseEntity.ok(odontologoBuscado);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/BuscarPorApellido/{apellido}")
+    public ResponseEntity<Optional<Odontologo>> buscarPorApellidoMinuscula(@PathVariable String apellido){
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorApellidoMinuscula(apellido.toLowerCase());
+        if(odontologoBuscado.isPresent()){
             return ResponseEntity.ok(odontologoBuscado);
         } else {
             return ResponseEntity.notFound().build();
@@ -51,6 +63,7 @@ public class OdontologoController {
     public ResponseEntity<List<OdontologoDTO>> listaOdontologosDTO() {
         return ResponseEntity.ok(odontologoService.buscarTodosLosOdontologosDTO());
     }
+
 
     @PostMapping
     public ResponseEntity<Odontologo> registrarOdontologoMatricula(@RequestBody Odontologo odontologo){

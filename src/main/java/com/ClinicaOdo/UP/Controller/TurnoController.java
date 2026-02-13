@@ -39,14 +39,15 @@ public class TurnoController {
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(agendarTurnoDTO.getOdontologoId());
 
         //Validar turnos que sean de hoy en adelante
-        /*if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
-                Turno turno = new Turno(
+        if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
+            Turno turno = new Turno(
                     pacienteBuscado.get(),
                     odontologoBuscado.get(),
                     agendarTurnoDTO.getFecha().isEqual(LocalDate.now())
-                );*/
+            );
+        }
 
-        if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
+        /*if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()){
             Turno turno = new Turno(
                     pacienteBuscado.get(),
                     odontologoBuscado.get(),
@@ -55,13 +56,31 @@ public class TurnoController {
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
         } else {
             return ResponseEntity.badRequest().build();
-        }
+        }*/
+        return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping
-    public ResponseEntity<List<TurnoDTO>> listarTurnoDTO(){
-        return ResponseEntity.ok(turnoService.listarTurnos());
-    }
+    /*@GetMapping
+    public ResponseEntity<List<AgendarTurnoDTO>> listarTurnoDTO(@RequestBody AgendarTurnoDTO agendarTurnoDTO){
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(agendarTurnoDTO.getPacienteId());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(agendarTurnoDTO.getOdontologoId());
+        if(pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
+            Turno turno = new Turno(
+                    pacienteBuscado.get(),
+                    odontologoBuscado.get(),
+                    agendarTurnoDTO.getFecha().isEqual(LocalDate.now())
+            );
+            return ResponseEntity.ok(turnoService.listarTurnos());
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
+    }*/
+
+    /*@GetMapping
+    public ResponseEntity<List<TurnoDTO>> listarTurnoDTO() {
+            return ResponseEntity.ok(turnoService.listarTurnos());
+    }*/
 
     @GetMapping("/TurnoPorPaciente/{id}")
     public ResponseEntity<List<TurnoDTO>> listarTurnosDTOPorPaciente(@PathVariable Long id) throws ResourceNotFoundException {
